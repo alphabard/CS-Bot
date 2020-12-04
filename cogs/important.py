@@ -17,7 +17,7 @@ class important(commands.Cog, name='Important'):
 
     @commands.command(description = 'Invite xenon to your server!')
     async def invite(self, ctx):
-        embed=discord.Embed(title='Invite link', description='Click the link below to invite me to your server! \n\n[Invite Link](https://discord.com/oauth2/authorize?client_id=720825208889540709&scope=bot&permissions)', color=colour())
+        embed=discord.Embed(title='Invite link', description='Click the link below to invite me to your server! \n\n[Invite Link](https://discord.com/api/oauth2/authorize?client_id=784084894660952064&permissions=8&scope=bot)', color=colour())
         embed.set_footer(text = f'Requested by: {ctx.author}')
         await ctx.send(embed=embed)
 

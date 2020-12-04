@@ -4,12 +4,12 @@ import os
 
 from config import token
 
-description = "A bot made for CS Dojo Discord server"
+description = "A bot made for moderation and fun in CS Dojo Discord server"
 
 # intents = discord.Intents.default()
 # intents.members = True
 
-bot = commands.Bot(command_prefix='!', description=description)
+bot = commands.Bot(command_prefix='c.', description=description)
 
 @bot.event
 async def on_ready():
@@ -27,7 +27,6 @@ os.environ["JISHAKU_HIDE"] = "True"
 cogs = [
     'cogs.important',
     'cogs.other',
-    'cogs.server',
     'cogs.moderation'
 ]
 

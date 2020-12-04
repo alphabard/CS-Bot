@@ -13,21 +13,6 @@ class other(commands.Cog, name='other'):
     def __init__(self, bot):
         self.bot = bot
 
-
-    @commands.command(description = "Shows you're away")
-    async def afk(self, ctx):
-        try:
-            nickname = ctx.author.display_name 
-            afk = f'[AFK] {nickname}'
-            await ctx.author.edit(nick=afk)
-            await ctx.channel.send(f'{ctx.author} has gone AFK')
-            await self.bot.wait_for('message', check=lambda message: message.author == ctx.author)
-            await ctx.author.edit(nick=nickname)
-            await ctx.channel.send(f'{ctx.author.mention} was removed from AFK')
-        except commands.BotMissingPermissions:
-            embed=discord.Embed(description="The bot needs to have a higher role for you to go into AFK.", color=colour())
-            await ctx.send(embed=embed)
-    
     @commands.command(aliases = ['create tag', 'create'])
     async def create_tag(self, ctx, * , name):
         with open('tags.json') as f:
@@ -64,13 +49,6 @@ class other(commands.Cog, name='other'):
             with open('tags.json', 'w') as f:
                 json.dump(tags, f, indent = 4)
             await ctx.send("Tag edited!")
-    
-    @commands.command()
-    async def delete_tag(self, ctx, *, arg):
-        allow_users = []
-        if ctx.author.id in allow_users:
-            with open('tags.json') as f:
-                tags = json.load(f)
 
 def setup(bot):
     bot.add_cog(other(bot))
