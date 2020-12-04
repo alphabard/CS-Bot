@@ -97,6 +97,28 @@ class moderation(commands.Cog, name='Moderation'):
         except commands.CheckFailure:
             await ctx.send("You don't have the permissions to ban people.")
 
+    #reporting users
+    """
+    one users reports other in any channel then the report is sent to a channel where only staff can see it.
+    """
+    @commands.command()
+    @commands.Cog.listener()
+    async def report(self, ctx, member: discord.Member=None, content=None):
+        if not member:
+            embed = discord.Embed(description='Please mention a member that you want to report!')
+            await ctx.send(embed=embed)
+        if not content:
+            embed = discord.Embed(description='Please Provide report content with evidence!')
+            await ctx.send(embed=embed)
+        else:
+            try:
+                logs = self.bot.get_channel(int(784411030142844938))
+                await ctx.send(f'{member} was successfully Reported!')
+                embed = discord.Embed(title=f'{member} was reported', description=content)
+                await logs.send(embed=embed)
+            except:
+                pass
+
     @commands.command(pass_context = True)
     @commands.has_role('Staff')
     async def mute(self, ctx, member: discord.Member=None, *, reason=None):
