@@ -27,7 +27,7 @@ os.environ["JISHAKU_HIDE"] = "True"
 cogs = [
     'cogs.important',
     'cogs.other',
-    'cogs.moderation'
+    'cogs.moderation',
 ]
 
 for cog in cogs:
