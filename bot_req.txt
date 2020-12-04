@@ -1,0 +1,7 @@
+Roles:-
+Role named "CS BOT" which have all the perms
+Role named "Staff" that will be given to bot as well as the people who are staff of the server
+
+channels:-
+Mod Log channels for mod logs
+Reports channels for reports
