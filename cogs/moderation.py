@@ -16,7 +16,7 @@ class moderation(commands.Cog, name='Moderation'):
     @commands.has_permissions(manage_messages=True)
     async def purge(self, ctx, amount: int = None):
         try:
-            logs = self.bot.get_channel(733708136049016882)
+            logs = self.bot.get_channel(int(733708136049016882))
             if not amount:
                 embed=discord.Embed(description='Please specify an amount that you want to purge')
                 await ctx.send(embed=embed)
@@ -31,7 +31,7 @@ class moderation(commands.Cog, name='Moderation'):
     @commands.has_role('Staff')
     async def warn(self, ctx, user: discord.Member=None, *, arg=None):
         try:
-            logs = self.bot.get_channel(733708136049016882)
+            logs = self.bot.get_channel(int(733708136049016882))
             if not user:
                 embed=discord.Embed(description='Please mention a member that you want to warn!')
                 await ctx.send(embed=embed)
@@ -63,13 +63,14 @@ class moderation(commands.Cog, name='Moderation'):
                 await ctx.send(embed=embed)
             else:
                 try:
-                    logs = self.bot.get_channel(733392614614761473)
+                    logs = self.bot.get_channel(int(733392614614761473))
                     await user.kick(reason=reason)
                     await ctx.send(f'{user} was successfully kicked!')
                     embed = discord.Embed(title="Kick", description=f'**Reason:** {reason}\n**Member kicked:** {user.mention}\n**kicked by:** {ctx.author.mention}', color=0xffffff)
                     await logs.send(embed=embed)
                 except:
-                    await ctx.send(f'{user} could not be kicked.')
+                    # await ctx.send(f'{user} could not be kicked.')
+                    pass
         except commands.CheckFailure:
             await ctx.send("You don't have the permissions to kick people.")
 
@@ -85,13 +86,14 @@ class moderation(commands.Cog, name='Moderation'):
                 await ctx.send(embed=embed)
             else:
                 try:
-                    logs = self.bot.get_channel(733392614614761473)
+                    logs = self.bot.get_channel(int(733392614614761473))
                     await user.ban(reason=reason)
                     await ctx.send(f'{user} was successfully Banned!')
                     embed = discord.Embed(title="Ban", description=f'**Reason:** {reason}\n**Member Banned:** {user.mention}\n**Banned by:** {ctx.author.mention}', color=0xffffff)
                     await logs.send(embed=embed)
                 except:
-                    await ctx.send(f'{user} could not be Banned.')
+                    # await ctx.send("Some error")
+                    pass
         except commands.CheckFailure:
             await ctx.send("You don't have the permissions to ban people.")
 
@@ -103,7 +105,7 @@ class moderation(commands.Cog, name='Moderation'):
                 embed=discord.Embed(description='Please mention a member that you want to mute!')
                 await ctx.send(embed=embed)
             else:
-                logs = self.bot.get_channel(733474243311829042)
+                logs = self.bot.get_channel(int(733474243311829042))
                 role = discord.utils.get(ctx.guild.roles, name="Muted")
                 await member.add_roles(role)
                 em=discord.Embed(description=f'{member.name} was successfully muted!')
@@ -122,7 +124,7 @@ class moderation(commands.Cog, name='Moderation'):
                 await ctx.send(embed=embed)
             else:
                 role = discord.utils.get(ctx.guild.roles, name="Muted")
-                logs = self.bot.get_channel(733474243311829042)
+                logs = self.bot.get_channel(int(733474243311829042))
                 await member.remove_roles(role)
                 await ctx.send(f'{member.mention} has been unmuted!')
                 embed = discord.Embed(title="Unmute", description=f'{member.mention} was unmuted by {ctx.author.mention}', color=0xffffff)
@@ -130,21 +132,10 @@ class moderation(commands.Cog, name='Moderation'):
         except commands.CheckFailure:
             await ctx.send("You need staff for this.")    
 
-    @commands.Cog.listener()
-    async def on_message(self, message):
-        logs = self.bot.get_channel(733708136049016882)
-        bad_words = ["nigga", "nigger"]
-        for word in bad_words:
-            if message.content.count(word) > 0:
-                await message.channel.purge(limit=1)
-                await message.channel.send('Sorry, you cant say that. It might offend some people.')
-                embed = discord.Embed(title="Bad Word", description=f'{message.author.mention} said the N-Word', color=0xffffff)
-                await logs.send(embed=embed)
-        await self.bot.process_commands(message)
 
     @commands.Cog.listener()
     async def on_message_delete(self, message):
-        logs = self.bot.get_channel(733708136049016882)
+        logs = self.bot.get_channel(int(784360508299804682))
         if not message.attachments:
             await logs.send(f'Deleted in {message.channel.mention}')
             embed=discord.Embed(title = 'Message Deleted', description = message.content)
@@ -162,7 +153,7 @@ class moderation(commands.Cog, name='Moderation'):
     
     @commands.Cog.listener()
     async def on_message_edit(self, before, after):
-        channel = self.bot.get_channel(733708136049016882)
+        channel = self.bot.get_channel(int(784360508299804682))
         if before.author == self.bot.user:
             return
         await channel.send(f'Edited in {before.channel}')
