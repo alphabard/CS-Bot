@@ -1,6 +1,7 @@
 Roles:-
 Role named "CS BOT" which have all the perms
 Role named "Staff" that will be given to bot as well as the people who are staff of the server
+Role named "Muted" and the users with this role should not be allowded to send messages
 
 channels:-
 Mod Log channels for mod logs
