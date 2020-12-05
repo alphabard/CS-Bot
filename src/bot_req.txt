@@ -4,5 +4,7 @@ Role named "Staff" that will be given to bot as well as the people who are staff
 Role named "Muted" and the users with this role should not be allowded to send messages
 
 channels:-
-Mod Log channels for mod logs
-Reports channels for reports
+Mod Log channel for mod logs
+Reports channel for reports
+
+PLEASE PROVIDE ME WITH ID OF THE CHANNELS

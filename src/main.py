@@ -9,7 +9,7 @@ description = "A bot made for moderation and fun in CS Dojo Discord server"
 # intents = discord.Intents.default()
 # intents.members = True
 
-bot = commands.Bot(command_prefix='c.', description=description)
+bot = commands.Bot(command_prefix='cs.', description=description)
 
 @bot.event
 async def on_ready():
