@@ -30,6 +30,51 @@ A palindromic number reads the same both ways. The largest palindrome made from 
 Find the largest palindrome made from the product of two 3-digit numbers.
 """
 
+p5 = """
+Smallest multiple\n
+Problem 5\n
+2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.\n
+What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
+"""
+
+p6 = """
+Sum square difference\n
+Problem 6\n
+The sum of the squares of the first ten natural numbers is,\n
+https://cdn.discordapp.com/attachments/785018975057608705/785018991335964702/unknown.png\n
+Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is\n
+https://cdn.discordapp.com/attachments/785018975057608705/785019163630501918/unknown.png\n
+Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
+"""
+
+p7 = """
+Largest palindrome product\n
+Problem 4\n
+A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.\n
+Find the largest palindrome made from the product of two 3-digit numbers.
+"""
+
+p8 = """
+Largest palindrome product\n
+Problem 4\n
+A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.\n
+Find the largest palindrome made from the product of two 3-digit numbers.
+"""
+
+p9 = """
+Largest palindrome product\n
+Problem 4\n
+A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.\n
+Find the largest palindrome made from the product of two 3-digit numbers.
+"""
+
+p10 = """
+Largest palindrome product\n
+Problem 4\n
+A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.\n
+Find the largest palindrome made from the product of two 3-digit numbers.
+"""
+
 class euler(commands.Cog, name='Euler'):
     def __init__(self, bot):
         self.bot = bot
@@ -52,6 +97,16 @@ class euler(commands.Cog, name='Euler'):
     @commands.command()
     async def e4(self, ctx):
         embed = discord.Embed(description=p4)
+        await ctx.send(embed=embed)
+
+    @commands.command()
+    async def e5(self, ctx):
+        embed = discord.Embed(description=p5)
+        await ctx.send(embed=embed)
+
+    @commands.command()
+    async def e6(self, ctx):
+        embed = discord.Embed(description=p6)
         await ctx.send(embed=embed)
 
 def setup(bot):
