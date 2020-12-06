@@ -13,19 +13,25 @@ class other(commands.Cog, name='other'):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(aliases = ['create tag', 'create'])
-    async def create_tag(self, ctx, * , name):
-        with open('tags.json') as f:
-            tags = json.load(f)
-        if name in tags.keys():
-            await ctx.send("There's a tag with that name!")
+    #one line tag command
+    #cs.create_tag "Hello" "Hello World! How are you!"
+    @commands.command()
+    async def create_tag(self, ctx, name, des):
+        if not name:
+            await ctx.send("Please Provide a name for that tag!")
+        if not des:
+            await ctx.send("Please Provide description for the tag!")
         else:
-            await ctx.send("What's the content of this tag? ||send message||")
-            description = await self.bot.wait_for('message', check=lambda message: message.author == ctx.author)
-            tags[name] = f"{str(description.content)}"
-            with open('tags.json', 'w') as f:
-                json.dump(tags, f, indent = 4)
-            await ctx.send(f"Done! Do `!tag {name}` to see your tag.")
+            with open('tags.json') as f:
+                tags = json.load(f)
+            if name in tags.keys():
+                await ctx.send("There's a tag with that name!")
+            else:
+                description = des
+                tags[name] = f"{str(description)}"
+                with open('tags.json', 'w') as f:
+                    json.dump(tags, f, indent=4)
+                await ctx.send(f"Done! Do `cs.tag {name}` to see your tag.")
     
     @commands.command()
     async def tag(self, ctx, *, tag):
