@@ -28,6 +28,7 @@ cogs = [
     'cogs.important',
     'cogs.other',
     'cogs.moderation',
+    'cogs.euler'
 ]
 
 for cog in cogs:
