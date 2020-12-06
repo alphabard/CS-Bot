@@ -18,7 +18,7 @@ async def on_ready():
 @bot.event
 async def on_command_error(ctx, error):
     error_logs = bot.get_channel(int(784080015687680040))
-    await error_logs.send(f"```py\n{error}\n```")
+    print(error)
  
 os.environ["JISHAKU_NO_UNDERSCORE"] = "True"
 os.environ["JISHAKU_NO_DM_TRACEBACK"] = "True"
@@ -28,7 +28,7 @@ cogs = [
     'cogs.important',
     'cogs.other',
     'cogs.moderation',
-    'cogs.euler'
+    'cogs.euler',
 ]
 
 for cog in cogs:
