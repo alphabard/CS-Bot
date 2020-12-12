@@ -50,6 +50,27 @@ class moderation(commands.Cog, name='Moderation'):
                 await logs.send(embed=embed)
         except commands.CheckFailure:
             await ctx.send("You need to be staff to use this command!")
+            
+    @commands.command()
+    @commands.has_role('Staff')
+    async def notify(self, ctx, user: discord.Member=None, *, arg=None):
+        try:
+            if not user:
+                embed=discord.Embed(description='Please mention a member that you want to notify!')
+                await ctx.send(embed=embed)
+            if not arg:
+                embed=discord.Embed(description='Please provide a reason!')
+                await ctx.send(embed=embed)
+            else:
+                
+                await ctx.send(f'{user.mention} has been notified')
+                try:
+                    await user.create_dm()
+                    await user.dm_channel.send(f'{user.mention}, you have been warned in {ctx.guild.name} for {arg}!')
+                except: 
+                    await ctx.send(f"> {user}'s DMs are closed!")
+        except commands.CheckFailure:
+            await ctx.send("You need to be staff to use this command!")
 
     @commands.command()
     @commands.has_permissions(kick_members=True)
